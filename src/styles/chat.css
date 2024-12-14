@@ -1,0 +1,89 @@
+.prefix {
+    font-weight: bold;
+    margin-right: 5px;
+    color: #555;
+}
+.chat-container {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    height: 80vh;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background: #f9f9f9;
+}
+
+.message {
+    width: 40%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    word-wrap: break-word;
+}
+
+.client {
+    background-color: #ffebee;
+
+    align-self: flex-start;
+    text-align: left;
+}
+
+.manager {
+    background-color: #e0f7fa;
+    align-self: flex-end;
+    text-align: right;
+}
+
+.message-header {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.message-content {
+    font-size: 14px;
+    margin: 0;
+}
+
+.message-input {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.message-input textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    resize: none;
+}
+
+.message-input button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.message-input button:hover {
+    background-color: #0056b3;
+}

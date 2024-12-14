@@ -1,0 +1,12 @@
+.auth-main-wrapper,.auth-main-layout{
+    height: 100%;
+    width: 100%;
+}
+
+.auth-main-wrapper{
+    background-color: rgb(245, 245, 245);
+}
+.error-message {
+    color: red;
+    margin-top: 10px;
+}

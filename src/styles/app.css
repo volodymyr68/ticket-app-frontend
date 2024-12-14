@@ -1,0 +1,58 @@
+body {
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0)
+}
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 10px 20px;
+    font-family: 'Roboto', sans-serif; /* Единый шрифт */
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: inherit;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+    background-color: #f5f5f5;
+}
+
+.v-btn.nav-link {
+    font-family: inherit; /* Использовать шрифт родительского элемента */
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    text-transform: none; /* Убирает верхний регистр, если применён */
+}
+.cta-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #1976d2; /* Акцентный цвет */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.cta-link:hover {
+    background-color: #1565c0; /* Более тёмный оттенок */
+    transform: scale(1.05); /* Лёгкое увеличение */
+}
+
+.cta-link:active {
+    transform: scale(0.95); /* Эффект нажатия */
+}

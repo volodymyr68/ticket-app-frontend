@@ -1,0 +1,9 @@
+.forum-container {
+    max-height: 450px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.forum-message-card {
+    margin-bottom: 10px;
+}

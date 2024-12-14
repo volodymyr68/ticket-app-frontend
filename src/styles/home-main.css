@@ -1,0 +1,22 @@
+.home-main {
+    background-color: #f5f5f5;
+    min-height: 50%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.home-display {
+    color: #ff5722;
+}
+
+.home-subtitle {
+    color: #757575;
+}
+
+.home-card {
+    transition: box-shadow 0.3s ease;
+}
+
+.home-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}

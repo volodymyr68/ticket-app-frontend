@@ -1,0 +1,156 @@
+/* Кнопка для подтверждения и оплаты */
+.pay-button {
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 15px;
+    text-transform: none;
+    background-color: #1abc9c;
+    transition: all 0.3s ease-in-out;
+}
+
+.pay-button:hover {
+    background-color: #16a085;
+    transform: translateY(-3px);
+}
+
+.pay-button:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(26, 188, 156, 0.5);
+}
+
+/* Кнопка назад */
+.back-button {
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 15px;
+    text-transform: none;
+    background-color: #ecf0f1;
+    color: #7f8c8d;
+    transition: all 0.3s ease-in-out;
+}
+
+.back-button:hover {
+    background-color: #dcdde1;
+    color: #34495e;
+    transform: translateY(-3px);
+}
+
+.back-button:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(199, 204, 208, 0.5);
+}
+/* Общий стиль */
+.v-container {
+    background-color: #f3f4f6;
+    padding: 30px 15px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.v-card {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+/* Стиль заголовков */
+.v-card-title {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.v-card-subtitle {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+/* Стили списка */
+.v-list-title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #34495e;
+}
+
+.v-list-subtitle {
+    color: #7f8c8d;
+}
+
+/* Стили изображения */
+.v-img {
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили кнопок */
+.v-btn {
+    font-weight: 600;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.v-btn.primary {
+    background-color: #1abc9c;
+    color: white;
+}
+
+.v-btn.primary:hover {
+    background-color: #16a085;
+}
+
+.v-btn.secondary {
+    background-color: #ecf0f1;
+    color: #7f8c8d;
+}
+
+.v-btn.secondary:hover {
+    background-color: #dcdde1;
+}
+
+/* Стиль текста */
+.text-h6 {
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+/* Вертикальный разделитель */
+.v-divider {
+    margin: 20px 0;
+}
+
+/* Поле выбора */
+.v-select {
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.v-select .v-input__control {
+    padding: 10px 14px;
+}
+
+/* Отступы и расположение */
+.mt-4 {
+    margin-top: 16px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}

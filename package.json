@@ -1,0 +1,31 @@
+{
+  "name": "ticket-frontend",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@kyvg/vue3-notification": "^3.4.1",
+    "@mdi/font": "^7.4.47",
+    "@vueform/slider": "^2.1.10",
+    "axios": "^1.7.7",
+    "laravel-vite-plugin": "^1.1.1",
+    "pinia": "^2.2.6",
+    "vue": "^3.5.12",
+    "vue-router": "^4.4.5",
+    "vue3-cookies": "^1.0.6",
+    "vue3-slider": "^1.10.1",
+    "vuetify": "^3.7.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.4",
+    "laravel-echo": "^1.17.1",
+    "pusher-js": "^8.4.0-rc2",
+    "vite": "^5.4.10",
+    "vite-plugin-vue-devtools": "^7.5.4"
+  }
+}
