@@ -1,8 +1,9 @@
 import {axiosInstance} from "@/services/axios.js";
 import {useUserStore} from "@/stores/userStore.js";
 import {notify} from "@kyvg/vue3-notification";
+import {useBonusStore} from "@/stores/bonusStore.js";
 
-export const payTicket = async (vehicle_id, seats_taken, price) => {
+export const payTicket = async (vehicle_id, seats_taken, price,bonus) => {
     const userStore = useUserStore();
     try {
         const response = await axiosInstance.post(
@@ -11,6 +12,7 @@ export const payTicket = async (vehicle_id, seats_taken, price) => {
                 vehicle_id,
                 seats_taken,
                 price,
+                bonus
             },
             {
                 headers: {

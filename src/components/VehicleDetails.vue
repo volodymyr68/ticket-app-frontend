@@ -1,43 +1,54 @@
 <script setup>
-import {useRoute} from "vue-router";
-import {onMounted, ref} from "vue";
-import {payTicket} from "@/composables/ticketComposable.js";
+import { useRoute } from "vue-router";
+import { onMounted, ref, computed } from "vue";
+import { payTicket } from "@/composables/ticketComposable.js";
 
 import Pusher from "pusher-js";
-import {useVehicleStore} from "@/stores/vehicleStore.js";
+import { useVehicleStore } from "@/stores/vehicleStore.js";
+import { useBonusStore } from "@/stores/bonusStore.js";
 
 const route = useRoute();
 const vehicleId = route.params.id;
 const vehicle = ref(null);
 const selectedSeats = ref(1);
 const vehicleStore = useVehicleStore();
+const bonusStore = useBonusStore();
+const isBonus = ref(false);
+
 onMounted(async () => {
   const response = await vehicleStore.getVehicleById(vehicleId);
+  await bonusStore.fetchUserBonus();
   vehicle.value = response.data;
-  const pusher = new Pusher('0c48b8eef40cc5d2451b', {
-    cluster: 'eu'
+
+  const pusher = new Pusher("0c48b8eef40cc5d2451b", {
+    cluster: "eu",
   });
 
-  const channel = pusher.subscribe('DownloadTicket');
-  channel.bind('App\\Events\\SendTicketEvent', function(data) {
+  const channel = pusher.subscribe("DownloadTicket");
+  channel.bind("App\\Events\\SendTicketEvent", function (data) {
     const downloadUrl = data.url;
 
     if (downloadUrl) {
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = downloadUrl;
-      link.download = 'ticket.pdf';
-      link.target = '_blank';
+      link.download = "ticket.pdf";
+      link.target = "_blank";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     } else {
-      console.error('Download URL is missing!');
+      console.error("Download URL is missing!");
     }
   });
 });
 
-
-
+const ticketPrice = computed(() => {
+  const basePrice = selectedSeats.value * (vehicle.value?.ticket_cost || 0);
+  if (isBonus.value) {
+    return Math.max(basePrice - bonusStore.bonus, 0);
+  }
+  return basePrice;
+});
 </script>
 
 <template>
@@ -89,15 +100,21 @@ onMounted(async () => {
               <v-col cols="12" md="6">
                 <v-select
                     v-model="selectedSeats"
-                    :items="[1,2,3,4]"
+                    :items="[1, 2, 3, 4]"
                     label="Number of Seats"
                     outlined
                 ></v-select>
               </v-col>
               <v-col cols="12" md="6" class="text-right">
-                <p class="text-h6" :v-model="totalPrice">
-                  Total Cost: ${{ (selectedSeats * vehicle?.ticket_cost).toFixed(2) }}
+                <p class="text-h6">
+                  Total Cost: ${{ ticketPrice.toFixed(2) }}
                 </p>
+              </v-col>
+              <v-col cols="12" md="6" class="text-right">
+                <v-checkbox
+                    :label="`Use bonuses (${bonusStore.bonus} available)`"
+                    v-model="isBonus"
+                ></v-checkbox>
               </v-col>
             </v-row>
           </v-card-text>
@@ -110,17 +127,13 @@ onMounted(async () => {
                   color="primary"
                   block
                   class="pay-button"
-                  @click="payTicket(vehicleId, selectedSeats, selectedSeats * vehicle?.ticket_cost)"
+                  @click="payTicket(vehicleId, selectedSeats, ticketPrice, isBonus)"
               >
                 Confirm and Pay
               </v-btn>
 
-              <v-btn
-                  color="secondary"
-                  block
-                  class="back-button"
-              >
-                <router-link :to="{'name':'search'}">Back to Search</router-link>
+              <v-btn color="secondary" block class="back-button">
+                <router-link :to="{ name: 'search' }">Back to Search</router-link>
               </v-btn>
             </v-row>
           </v-card-actions>
@@ -129,6 +142,7 @@ onMounted(async () => {
     </v-row>
   </v-container>
 </template>
+
 <style scoped>
 @import "../styles/vehicle-details.css";
 </style>

@@ -5,9 +5,11 @@ import { useTicketStore } from "@/stores/ticketStore.js";
 import { downloadTicket } from "@/composables/ticketComposable.js";
 import Pusher from "pusher-js";
 import {userErrors, validateUser} from "@/composables/authComposable.js";
+import {useBonusStore} from "@/stores/bonusStore.js";
 
 const userStore = useUserStore();
 const ticketStore = useTicketStore();
+const bonusStore = useBonusStore();
 
 const user = ref({
   id: '',
@@ -26,6 +28,7 @@ onMounted(async () => {
   await userStore.fetchUser();
   user.value = { ...userStore.user };
   await ticketStore.fetchUserTickets();
+  await  bonusStore.fetchUserBonus();
   tickets.value = ticketStore.userTickets;
   const pusher = new Pusher('0c48b8eef40cc5d2451b', {
     cluster: 'eu',
@@ -97,6 +100,9 @@ const saveUser = () => {
               height="200px"
               width="200px"
           ></v-img>
+          <v-card-actions>
+              Current bonus : {{bonusStore.bonus}}
+          </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
