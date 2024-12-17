@@ -1,7 +1,6 @@
 import {axiosInstance} from "@/services/axios.js";
 import {useUserStore} from "@/stores/userStore.js";
 import {notify} from "@kyvg/vue3-notification";
-import {useBonusStore} from "@/stores/bonusStore.js";
 
 export const payTicket = async (vehicle_id, seats_taken, price,bonus) => {
     const userStore = useUserStore();
@@ -45,16 +44,6 @@ export const downloadTicket = async (id) => {
             title: "Ticket will download soon",
         });
 
-        // const url = window.URL.createObjectURL(new Blob([response.data]));
-        //
-        // const link = document.createElement('a');
-        // link.href = url;
-        // link.setAttribute('download', 'vehicle_report.pdf');
-        // document.body.appendChild(link);
-        //
-        // link.click();
-        //
-        // document.body.removeChild(link);
     } catch (error) {
         notify({
             type: "error",

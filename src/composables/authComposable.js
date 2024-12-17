@@ -59,7 +59,6 @@ export const register = async (name, email, password ) => {
 
 export const handleGoogleAuth = async () => {
     try {
-        // Redirect to the backend, which will handle the OAuth flow
         window.location.href = 'http://localhost:8080/google/redirect';
     } catch (error) {
         notify({
@@ -87,7 +86,6 @@ function getCookie(name) {
 export const checkToken = () => {
     const userStore = useUserStore();
     const { cookies } = useCookies();
-    // const token = cookies.get('apiToken');
     const token = getCookie('apiToken');
     if(token){
         userStore.setToken(decodeURIComponent(token));
@@ -97,7 +95,7 @@ export const checkToken = () => {
 }
 
 export const validateUser = (user) => {
-    userErrors.value = {}; // Reset errors
+    userErrors.value = {};
     let isValid = true;
 
     if (!user.value.name || user.value.name.trim().length < 3) {

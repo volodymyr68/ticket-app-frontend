@@ -48,7 +48,7 @@ export const useUserStore = defineStore('userStore', () => {
             formData.append("number", user.number);
             formData.append("sex", user.sex);
             if(user.newImage){
-                formData.append("image", user.newImage);  // Assuming user.newImage is a File object
+                formData.append("image", user.newImage);
             }
             const response = await axiosInstance.post(`/users`, formData, {
                 headers: {

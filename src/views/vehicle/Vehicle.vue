@@ -28,7 +28,6 @@ onMounted(() => {
 
 <template>
   <v-app class="app">
-    <!-- Боковая панель фильтров -->
     <v-navigation-drawer app width="300" class="filters">
       <v-toolbar flat dense>
         <v-toolbar-title>Фільтри</v-toolbar-title>
@@ -77,7 +76,6 @@ onMounted(() => {
       </v-list>
     </v-navigation-drawer>
 
-    <!-- Основной контент -->
     <v-main>
       <v-container>
         <v-row>
@@ -86,7 +84,6 @@ onMounted(() => {
           </v-col>
         </v-row>
 
-        <!-- Старая пагинация -->
         <div class="pagination-wrapper">
           <v-btn
               icon

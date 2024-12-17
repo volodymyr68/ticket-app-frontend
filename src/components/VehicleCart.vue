@@ -25,9 +25,3 @@ defineProps({
     </v-card-actions>
   </v-card>
 </template>
-
-<style scoped>
-.vehicle-card {
-  margin: 10px;
-}
-</style>
